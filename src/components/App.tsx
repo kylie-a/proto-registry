@@ -110,7 +110,7 @@ class App extends React.PureComponent<IProps, IState> {
               onClick={onToggleTheme}
               active={useDarkTheme}
             />
-            <NavbarDivider/>
+            <NavbarDivider />
             {schema ? <TypeSearch nodes={schema.all}/> : <Spinner size={Spinner.SIZE_SMALL}/>}
           </NavbarGroup>
         </Navbar>

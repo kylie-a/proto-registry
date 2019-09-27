@@ -33,8 +33,9 @@ cd "$(dirname $0)"
 
 cp "$fds_path" src/schema/schema.pb
 export CI=true
-yarn lint
-yarn test
+# yarn lint
+# yarn test
+cp /home/node/app/node_modules/react-scripts/config/webpack.config.js /home/node/app/node_modules/react-scripts/config/webpack.config.prod
 yarn build
 
 mkdir -p "$registry_out/build"

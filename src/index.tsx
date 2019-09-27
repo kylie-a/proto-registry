@@ -42,6 +42,7 @@ const middlewareEnhancer = applyMiddleware(routerMiddleware(history))
 const persistanceEnhancer = persistState(storage, 'proto-registry')
 const enhancer: StoreEnhancer<IState> = compose(middlewareEnhancer, persistanceEnhancer)
 const reducer = mergePersistedState()(reducers)
+// @ts-ignore
 const store = createStore(reducer, enhancer)
 
 const element = document.getElementById('root')

@@ -1,5 +1,5 @@
 const { loaderNameMatches, getLoader } = require('react-app-rewired')
-const rewireTypescript = require('react-app-rewire-typescript')
+// const rewireTypescript = require('react-app-rewire-typescript')
 
 const ruleTestMatches = (rule, value) =>
   rule.test &&
@@ -29,10 +29,10 @@ const addBeforeRule = (rulesSource, ruleMatcher, value) => {
 }
 
 module.exports = (config, env) => {
-  config = rewireTypescript(config, env)
+  // config = rewireTypescript(config, env)
 
   const cssMatcher = r => ruleTestMatches(r, '.css')
-  const cssLoader = getLoader(config.module.rules, cssMatcher)
+  const cssLoader = getLoader(config().module.rules, cssMatcher)
   const scssRules = {
     test: /\.scss$/,
     use: (cssLoader.use || cssLoader.loader).concat([{
@@ -41,7 +41,7 @@ module.exports = (config, env) => {
   }
 
   const fileLoaderMatcher = r => loaderNameMatches(r, 'file-loader')
-  addBeforeRule(config.module.rules, fileLoaderMatcher, scssRules)
+  addBeforeRule(config().module.rules, fileLoaderMatcher, scssRules)
 
   return config
 }
